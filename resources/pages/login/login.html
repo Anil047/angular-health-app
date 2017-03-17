@@ -1,0 +1,12 @@
+<div class="login">
+
+
+    <h2 class="login-header">Health App</h2>
+
+    <form class="login-container">
+        <p *ngIf="showErr" class="alert-danger"> {{errMsg}}</p>
+        <p><input type="text" (keydown)="onKeyPress()" [(ngModel)]="appUser.userName" name="userName" placeholder="User Name"></p>
+        <p><input type="password" (keydown)="onKeyPress()" [(ngModel)]="appUser.password" name="password" placeholder="Password"></p>
+        <p><input type="submit" (click)="onSubmit()" value="Log in"></p>
+    </form>
+</div>

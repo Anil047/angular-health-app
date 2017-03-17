@@ -1,0 +1,68 @@
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">New Patient Form</h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <form class="form-horizontal" (ngSubmit)="onSubmit()" #patientForm="ngForm">
+        <input [(ngModel)]="patient.id" type="hidden" name="id"/>
+        <div class="box-body">
+            <div class="form-group">
+                <label for="patient-name" class="col-sm-2 control-label">Patient Name</label>
+                <div class="col-sm-10">
+                    <input type="text" [(ngModel)]="patient.name" class="form-control" name="name" id="patient-name" placeholder="Patient Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="patient-address" class="col-sm-2 control-label">Address</label>
+
+                <div class="col-sm-10">
+                    <input type="text" [(ngModel)]="patient.address" name="address" class="form-control" id="patient-address" placeholder="Address">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="patient-dob" class="col-sm-2 control-label">Date Of Birth</label>
+
+                <div class="col-sm-10">
+                    <input type="text" [(ngModel)]="patient.dateOfBirth" name="dateOfBirth" class="form-control" id="patient-dob" placeholder="Birth Date">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="patient-registration-date" class="col-sm-2 control-label">Date Of Registration</label>
+
+                <div class="col-sm-10">
+                    <input type="text" [(ngModel)]="patient.dateOfRegistration" name="dateOfRegistration" class="form-control" id="patient-registration-date" placeholder="Registration Date">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="patient-contact" class="col-sm-2 control-label">Emergency Contact No.</label>
+
+                <div class="col-sm-10">
+                    <input type="text" [(ngModel)]="patient.emergencyContact" name="emergencyContact" class="form-control" id="patient-contact" placeholder="Emergency Contact Number">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="patient-image" class="col-sm-2 control-label">Patient Image</label>
+                <div class="col-sm-10">
+                    <input (change)="onFileChange($event)" type="file" id="patient-image">
+                    <p class="help-block">Choose the image of patient</p>
+                </div>
+            </div>
+        <!--    <div class="form-group">
+                <label for="patient-image">Patient Image</label>
+                <div class="col-sm-10">
+                    <input type="file" id="patient-image">
+                </div>
+
+                <p class="help-block">Choose the image of patient</p>
+            </div>-->
+
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <!--<button type="submit" class="btn btn-default">Cancel</button>-->
+            <button type="submit" (click)="onSubmit($event)" class="btn btn-info pull-right">Submit</button>
+        </div>
+        <!-- /.box-footer -->
+    </form>
+</div>
