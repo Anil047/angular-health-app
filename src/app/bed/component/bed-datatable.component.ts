@@ -18,7 +18,7 @@ export class BedDatatableComponent implements OnInit {
     public rowsOnPage = 10;
     public sortBy = "bedName";
     public sortOrder = "asc";
-    private url = HealthAppConstants.ROOT_URL + "bed/";
+    private url = HealthAppConstants.ROOT_URL + "Bed/";
 
     constructor(private httpService: HttpService, private router: Router) {
     }

@@ -18,7 +18,7 @@ export class BedFormComponent implements OnInit {
     showMsg: boolean = false;
     infoMsg: string = "New bed Record Has been added Successfully";
     styleClass: string = "alert-success";
-    private url = HealthAppConstants.ROOT_URL + "bed/";
+    private url = HealthAppConstants.ROOT_URL + "Bed/";
     onSubmitUrl: 'add';
 
     constructor(private httpService: HttpService) {
