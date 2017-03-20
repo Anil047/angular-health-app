@@ -29,7 +29,7 @@
             <ul class="nav nav-sidebar">
                 <li class="active"><a href="#">Menu <span class="sr-only">(current)</span></a></li>
                 <li><a [routerLink]="['/dashboard',{outlets:{'dashboard-menu':['patient']}}]">Patient</a></li>
-                <li><a href="#">Bed</a></li>
+                <li><a [routerLink]="['/dashboard',{outlets:{'dashboard-menu':['bed']}}]">Bed</a></li>
                 <li><a href="#">Doctor</a></li>
                 <li><a href="#">Visits</a></li>
             </ul>
