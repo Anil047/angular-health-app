@@ -9,6 +9,9 @@ import {AppGuard} from "./app/login/service/app-guard.service";
 import {BedContainerComponent} from "./app/bed/component/bed-container.component";
 import {BedFormComponent} from "./app/bed/component/bed-form.component";
 import {BedDatatableComponent} from "./app/bed/component/bed-datatable.component";
+import {DoctorContainerComponent} from "./app/doctor/component/doctor-container.component";
+import {DoctorFormComponent} from "./app/doctor/component/doctor-form.component";
+import {DoctorDatatableComponent} from "./app/doctor/component/doctor-datatable.component";
 /**
  * Created by anil on 3/8/17.
  */
@@ -25,6 +28,12 @@ const routes: Routes = [
             path: 'bed', component: BedContainerComponent, outlet: 'dashboard-menu', children: [
             {path: 'add', component: BedFormComponent, outlet: 'bed-container'},
             {path: 'list', component: BedDatatableComponent, outlet: 'bed-container'}
+        ]
+        },
+        {
+            path: 'doctor', component: DoctorContainerComponent, outlet: 'dashboard-menu', children: [
+            {path: 'add', component: DoctorFormComponent, outlet: 'doctor-container'},
+            {path: 'list', component: DoctorDatatableComponent, outlet: 'doctor-container'}
         ]
         },
     ]}

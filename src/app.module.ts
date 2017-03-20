@@ -21,6 +21,9 @@ import {BedFormComponent} from "./app/bed/component/bed-form.component";
 import {HttpService} from "./app/patient/service/http.service";
 import {BedDatatableComponent} from "./app/bed/component/bed-datatable.component";
 import {BedDataFilterPipe} from "./app/utils/pipe/bed-data-filter.pipe";
+import {DoctorContainerComponent} from "./app/doctor/component/doctor-container.component";
+import {DoctorDatatableComponent} from "./app/doctor/component/doctor-datatable.component";
+import {DoctorFormComponent} from "./app/doctor/component/doctor-form.component";
 @NgModule({
     imports: [
         BrowserModule,
@@ -42,7 +45,10 @@ import {BedDataFilterPipe} from "./app/utils/pipe/bed-data-filter.pipe";
         LoginComponent,
         BedContainerComponent,
         BedFormComponent,
-        BedDatatableComponent
+        BedDatatableComponent,
+        DoctorContainerComponent,
+        DoctorDatatableComponent,
+        DoctorFormComponent
        // UpperCasePipe
     ],
     providers:[

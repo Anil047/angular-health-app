@@ -1,5 +1,5 @@
 import {HttpService} from "../../patient/service/http.service";
-import {Bed} from "../model/bed.model";
+import {Doctor} from "../model/doctor.model";
 import {HealthAppConstants} from "../../utils/HealthAppConstants";
 import {Component, OnInit} from "@angular/core";
 import {Observable} from "rxjs/Observable";
@@ -8,34 +8,35 @@ import {Observable} from "rxjs/Observable";
  */
 
 @Component({
-    selector: 'bed-form',
-    templateUrl: 'resources/pages/bed/bed-form.html',
+    selector: 'doctor-form',
+    templateUrl: 'resources/pages/doctor/doctor-form.html',
 })
 
-export class BedFormComponent implements OnInit {
-    bed: Bed = new Bed();
+export class DoctorFormComponent implements OnInit {
+    doctor: Doctor = new Doctor();
     buttonName: string = "Submit";
     showMsg: boolean = false;
-    infoMsg: string = "New bed Record Has been added Successfully";
+    infoMsg: string = "New doctor Record Has been added Successfully";
     styleClass: string = "alert-success";
-    private url = HealthAppConstants.ROOT_URL + "Bed/";
-    onSubmitUrl = 'add';
+    private url = HealthAppConstants.ROOT_URL + "Doctor/";
+    onSubmitUrl = "add";
 
     constructor(private httpService: HttpService) {
     }
 
     onSubmit(event): void {
         event.preventDefault();
-        let bedOperation: Observable<any>;
+        let doctorOperation: Observable<any>;
         if (this.buttonName.toLowerCase() == 'submit') {
-            bedOperation = this.httpService.addRow(this.bed, this.url + this.onSubmitUrl);
+            console.log("Add Url: " + this.url + this.onSubmitUrl);
+            doctorOperation = this.httpService.addRow(this.doctor, this.url + this.onSubmitUrl);
         } else {
-            bedOperation = this.httpService.updateRow(this.bed, this.url + this.onSubmitUrl);
+            doctorOperation = this.httpService.updateRow(this.doctor, this.url + this.onSubmitUrl);
         }
-        bedOperation
+        doctorOperation
             .subscribe(res => {
-                console.log("bed Added: " + JSON.stringify(res));
-                this.bed = new Bed();
+                console.log("doctor Added: " + JSON.stringify(res));
+                this.doctor = new Doctor();
                 this.httpService.otherSettings = {};
                 this.httpService.model = {};
                 this.showMsg = true;
@@ -56,7 +57,7 @@ export class BedFormComponent implements OnInit {
                     this.showMsg = otherSettings.showMsg;
                     this.infoMsg = otherSettings.infoMsg;
                     this.onSubmitUrl = otherSettings.onSubmitUrl;
-                    this.bed = this.httpService.model;
+                    this.doctor = this.httpService.model;
                 }
             }
         }
