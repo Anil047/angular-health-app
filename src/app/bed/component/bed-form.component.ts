@@ -16,9 +16,9 @@ export class BedFormComponent implements OnInit {
     bed: Bed = new Bed();
     buttonName: string = "Submit";
     showMsg: boolean = false;
-    infoMsg: string = "New Bed Record Has been added Successfully";
+    infoMsg: string = "New bed Record Has been added Successfully";
     styleClass: string = "alert-success";
-    private url = HealthAppConstants.ROOT_URL + "Bed/";
+    private url = HealthAppConstants.ROOT_URL + "bed/";
     onSubmitUrl: 'add';
 
     constructor(private httpService: HttpService) {
@@ -34,7 +34,7 @@ export class BedFormComponent implements OnInit {
         }
         bedOperation
             .subscribe(res => {
-                console.log("Bed Added: " + JSON.stringify(res));
+                console.log("bed Added: " + JSON.stringify(res));
                 this.bed = new Bed();
                 this.httpService.otherSettings = {};
                 this.httpService.model = {};

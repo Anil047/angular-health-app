@@ -16,10 +16,10 @@ import {PatientService} from "./app/patient/service/patient.service";
 import {LoginComponent} from "./app/login/component/login.component";
 import {AuthenticationService} from "./app/login/service/authentication.service";
 import {AppGuard} from "./app/login/service/app-guard.service";
-import {BedContainerComponent} from "./app/Bed/component/bed-container.component";
-import {BedFormComponent} from "./app/Bed/component/bed-form.component";
+import {BedContainerComponent} from "./app/bed/component/bed-container.component";
+import {BedFormComponent} from "./app/bed/component/bed-form.component";
 import {HttpService} from "./app/patient/service/http.service";
-import {BedDatatableComponent} from "./app/Bed/component/bed-datatable.component";
+import {BedDatatableComponent} from "./app/bed/component/bed-datatable.component";
 import {BedDataFilterPipe} from "./app/utils/pipe/bed-data-filter.pipe";
 @NgModule({
     imports: [

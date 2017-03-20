@@ -6,9 +6,9 @@ import {PatientFormComponent} from "./app/patient/component/patient-form.compone
 import {PatientDatatableComponent} from "./app/patient/component/patient-datatable.component";
 import {LoginComponent} from "./app/login/component/login.component";
 import {AppGuard} from "./app/login/service/app-guard.service";
-import {BedContainerComponent} from "./app/Bed/component/bed-container.component";
-import {BedFormComponent} from "./app/Bed/component/bed-form.component";
-import {BedDatatableComponent} from "./app/Bed/component/bed-datatable.component";
+import {BedContainerComponent} from "./app/bed/component/bed-container.component";
+import {BedFormComponent} from "./app/bed/component/bed-form.component";
+import {BedDatatableComponent} from "./app/bed/component/bed-datatable.component";
 /**
  * Created by anil on 3/8/17.
  */
