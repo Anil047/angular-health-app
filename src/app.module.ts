@@ -24,6 +24,10 @@ import {BedDataFilterPipe} from "./app/utils/pipe/bed-data-filter.pipe";
 import {DoctorContainerComponent} from "./app/doctor/component/doctor-container.component";
 import {DoctorDatatableComponent} from "./app/doctor/component/doctor-datatable.component";
 import {DoctorFormComponent} from "./app/doctor/component/doctor-form.component";
+import {VisitContainerComponent} from "./app/visit/component/visit-container.component";
+import {VisitFormComponent} from "./app/visit/component/visit-form.component";
+import {VisitDatatableComponent} from "./app/visit/component/visit-datatable.component";
+import {VisitDataFilterPipe} from "./app/utils/pipe/visit-data-filter.pipe";
 @NgModule({
     imports: [
         BrowserModule,
@@ -48,7 +52,11 @@ import {DoctorFormComponent} from "./app/doctor/component/doctor-form.component"
         BedDatatableComponent,
         DoctorContainerComponent,
         DoctorDatatableComponent,
-        DoctorFormComponent
+        DoctorFormComponent,
+        VisitContainerComponent,
+        VisitFormComponent,
+        VisitDatatableComponent,
+        VisitDataFilterPipe
        // UpperCasePipe
     ],
     providers:[

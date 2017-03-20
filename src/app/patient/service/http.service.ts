@@ -56,7 +56,7 @@ export class HttpService {
 
     deleteRow(url: string): Observable<any> {
         return this.http.delete(url, this.requestOptions)
-            .map((res: Response) => res.json())
+            .map((res: Response) => res)
             .catch((error: any) => this.handleError(error));
     }
 

@@ -12,6 +12,9 @@ import {BedDatatableComponent} from "./app/bed/component/bed-datatable.component
 import {DoctorContainerComponent} from "./app/doctor/component/doctor-container.component";
 import {DoctorFormComponent} from "./app/doctor/component/doctor-form.component";
 import {DoctorDatatableComponent} from "./app/doctor/component/doctor-datatable.component";
+import {VisitContainerComponent} from "./app/visit/component/visit-container.component";
+import {VisitFormComponent} from "./app/visit/component/visit-form.component";
+import {VisitDatatableComponent} from "./app/visit/component/visit-datatable.component";
 /**
  * Created by anil on 3/8/17.
  */
@@ -34,6 +37,12 @@ const routes: Routes = [
             path: 'doctor', component: DoctorContainerComponent, outlet: 'dashboard-menu', children: [
             {path: 'add', component: DoctorFormComponent, outlet: 'doctor-container'},
             {path: 'list', component: DoctorDatatableComponent, outlet: 'doctor-container'}
+        ]
+        },
+        {
+            path: 'visit', component: VisitContainerComponent, outlet: 'dashboard-menu', children: [
+            {path: 'add', component: VisitFormComponent, outlet: 'visit-container'},
+            {path: 'list', component: VisitDatatableComponent, outlet: 'visit-container'}
         ]
         },
     ]}

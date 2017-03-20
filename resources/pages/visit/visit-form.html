@@ -1,0 +1,93 @@
+<div class="box box-info">
+    <div class="box-header with-border">
+        <h3 class="box-title">Visit Form</h3>
+    </div>
+    <div *ngIf="showMsg"><p class="{{styleClass}}">{{infoMsg}}</p></div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <form class="form-horizontal" #visitForm="ngForm">
+        <input [(ngModel)]="visit.id" type="hidden" name="id"/>
+        <div class="box-body">
+
+            <div class="form-group">
+                <label for="visit-patientType" class="col-sm-2 control-label">Patient Type</label>
+                <div class="col-sm-10">
+                    <select class="form-control" name="patientType" #status="ngModel" [(ngModel)]="visit.patientType"
+                            id="visit-patientType">
+                        <option *ngFor="let patientType of patientTypeList" [value]="patientType.id">
+                            {{patientType.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="visit-patientName" class="col-sm-2 control-label">Patient</label>
+                <div class="col-sm-10">
+                    <select class="form-control" [(ngModel)]="visit.patient.id" name="patientName"
+                            id="visit-patientName">
+                        <option *ngFor="let patient of patientList" [ngValue]="patient.id">{{patient.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="visit-bed" class="col-sm-2 control-label">Bed</label>
+                <div class="col-sm-10">
+                    <select class="form-control" [(ngModel)]="visit.bed.id" name="bedName" id="visit-bed">
+                        <option *ngFor="let bed of bedList" [ngValue]="bed.id">{{bed.bedName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="visit-doctorName" class="col-sm-2 control-label">Doctor</label>
+                <div class="col-sm-10">
+                    <select class="form-control" [(ngModel)]="visit.doctor.id" name="doctorName" id="visit-doctorName">
+                        <option *ngFor="let doctor of doctorList" [ngValue]="doctor.id">{{doctor.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="visit-dateOfVisit" class="col-sm-2 control-label">Date Of Visit</label>
+                <div class="col-sm-10">
+                    <input type="text" [(ngModel)]="visit.dateOfVisit" class="form-control" name="dateOfVisit"
+                           id="visit-dateOfVisit"
+                           placeholder="Date of Visit">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="visit-dateOfDischarge" class="col-sm-2 control-label">Date Of Discharge</label>
+                <div class="col-sm-10">
+                    <input type="text" [(ngModel)]="visit.dateOfDischarge" class="form-control" name="dateOfVisit"
+                           id="visit-dateOfDischarge"
+                           placeholder="Date of Discharge">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="visit-symtoms" class="col-sm-2 control-label">Symptoms</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" name="symptoms" [(ngModel)]="visit.symptoms" id="visit-symtoms"
+                              rows="3" placeholder="Enter symptoms"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="visit-diseases" class="col-sm-2 control-label">Disease</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" name="diseases" [(ngModel)]="visit.disease" id="visit-diseases"
+                              rows="3" placeholder="Enter Diseases details"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="visit-treatment" class="col-sm-2 control-label">Treatment</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" name="treatment" [(ngModel)]="visit.treatment" id="visit-treatment"
+                              rows="3" placeholder="Enter treatment details"></textarea>
+                </div>
+            </div>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <!--<button type="submit" class="btn btn-default">Cancel</button>-->
+            <button type="submit" (click)="onSubmit($event)" class="btn btn-info pull-right">{{buttonName}}</button>
+        </div>
+        <!-- /.box-footer -->
+    </form>
+</div>
