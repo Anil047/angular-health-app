@@ -29,7 +29,7 @@
             'angular2-datatable': 'npm:angular2-datatable',
             //'buffer': 'npm:buffer',
             //'js-base64': 'npm:js-base64',
-            'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'
+            'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -47,6 +47,7 @@
                 main: './index.js',
                 defaultExtension: 'js'
             }
+
             // 'buffer': {
             //     main: './index.js',
             //     defaultExtension: 'js'

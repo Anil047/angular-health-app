@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {Patient} from "../model/patient.model";
-import {PatientService} from "../service/patient.service";
+import {HealthAppConstants} from "../../utils/HealthAppConstants";
+import {HttpService} from "../service/http.service";
+import {Observable} from "rxjs";
 
 /**
  * Created by anil on 3/8/17.
@@ -10,58 +12,108 @@ import {PatientService} from "../service/patient.service";
     templateUrl:'../../../../resources/pages/Patient/patient-form.html',
 })
 export class PatientFormComponent implements OnInit{
-    ngOnInit(): void {
-        this.patient = this.patientService.patient;
-    }
-    constructor(private patientService:PatientService){}
-    patient:Patient = new Patient();
-    files:FileList;
 
-    onFileChange(event):void{
-        this.files=event.target.files;
-    }
+    patient: Patient = new Patient();
+    buttonName: string = "Submit";
+    showMsg: boolean = false;
+    infoMsg: string = "New patient Record Has been added Successfully";
+    styleClass: string = "alert-success";
+    private url = HealthAppConstants.ROOT_URL + "Patient/";
+    onSubmitUrl = 'add';
+    file: any = {};
+    showFileInput = true;
 
-    encodeToBase64(file:File, patient:Patient, patientService:PatientService) {
-
-        if (file) {
-            var reader = new FileReader();
-            reader.onload = function () {
-                let encodedContents = reader.result;
-                patient.encodedFileInString = btoa(encodedContents);
-                if(reader.readyState){
-                    console.log(" this.patient.encodedFileInString :"+ patient.encodedFileInString);
-                    patientService.create("http://localhost:8080/Patient/add",patient);
-                }
-               // return patient;
-            };
-            reader.readAsBinaryString(file);
-            //return reader.result;
-        }
-        //return patient;
-
-
+    constructor(private httpService: HttpService) {
     }
 
-    onSubmit(event):void{
+    onSubmit(event): void {
         event.preventDefault();
-        let fileCheck:boolean = false;
-        if(this.files){
-            if(this.files.length>0) {
-                fileCheck=true;
-                var reader = new FileReader();
-                let imageFile: File = this.files[0];
-                let imagefileName: string = imageFile.name;
-                this.patient.extensionOfFile = '.' + imagefileName.substr(imagefileName.lastIndexOf('.') + 1);
-                this.encodeToBase64(imageFile, this.patient, this.patientService);
-            }
-
+        let patientOperation: Observable<any>;
+        if (this.buttonName.toLowerCase() == 'submit') {
+            this.patient.encodedFileInString = this.file.base64;
+            this.patient.extensionOfFile = this.file.fileExtention;
+            patientOperation = this.httpService.addRow(this.patient, this.url + this.onSubmitUrl);
+        } else {
+            patientOperation = this.httpService.updateRow(this.patient, this.url + this.onSubmitUrl);
         }
-        if(!fileCheck) {
-            this.patient.encodedFileInString = "";
-            this.patientService.create("http://localhost:8080/Patient/add", this.patient);
-        }
-
+        patientOperation
+            .subscribe(res => {
+                this.patient = new Patient();
+                this.httpService.otherSettings = {};
+                this.httpService.model = {};
+                this.showMsg = true;
+            });
 
     }
+
+    ngOnInit(): void {
+        this.checkEditEvent();
+    }
+
+    private checkEditEvent() {
+        if (typeof this.httpService.otherSettings != 'undefined') {
+            if (typeof this.httpService.otherSettings.buttonName != 'undefined') {
+                let otherSettings = this.httpService.otherSettings;
+                if (otherSettings.buttonName.toLowerCase() == 'update') {
+                    this.buttonName = otherSettings.buttonName;
+                    this.showMsg = otherSettings.showMsg;
+                    this.infoMsg = otherSettings.infoMsg;
+                    this.onSubmitUrl = otherSettings.onSubmitUrl;
+                    this.patient = this.httpService.model;
+                    this.showFileInput = false;
+                }
+            }
+        }
+    }
+
+    files: FileList;
+
+    onFileChange(event): void {
+        this._onChange(event).then(
+            res => this.file = res[0]
+        );
+    }
+
+
+    private _onChange(event): any {
+
+        // var response = [];
+
+        return new Promise(function (resolve, reject) {
+
+            //Retrieve all the files from the FileList object
+            var files = event.target.files;
+            var response = [];
+
+            if (files) {
+
+                for (var i = 0, f; f = files[i]; i++) {
+
+                    var r = new FileReader();
+                    r.onload = (function (currentFile) {
+                        var fileName = currentFile.name;
+                        return function (e) {
+                            let contents = e.target['result'];
+                            let file = {
+                                fileExtention: '.' + fileName.substr(fileName.lastIndexOf('.') + 1),
+                                base64: btoa(contents)
+                            };
+
+                            response.push(file);
+                            if (response.length == files.length) {
+                                // Everything is done. Resolve the promise.
+                                resolve(response);
+                            }
+                        };
+                    })(f);
+
+                    // Moved here to be able to access r and f variables
+                    r.readAsBinaryString(f);
+                }
+            }
+        });
+    }
+
+
 
 }

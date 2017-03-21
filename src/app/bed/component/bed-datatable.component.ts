@@ -34,14 +34,6 @@ export class BedDatatableComponent implements OnInit {
         this.getBedList();
     }
 
-    public toInt(num: string) {
-        return +num;
-    }
-
-    public sortByWordLength = (a: any) => {
-        return a.city.length;
-    }
-
     public removeBed(bed: Bed, rowNum) {
         this.httpService.deleteRow(this.url + `${bed.id}`)
             .subscribe(

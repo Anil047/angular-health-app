@@ -34,14 +34,6 @@ export class VisitDatatableComponent implements OnInit {
         this.getVisitList();
     }
 
-    public toInt(num: string) {
-        return +num;
-    }
-
-    public sortByWordLength = (a: any) => {
-        return a.city.length;
-    }
-
     public removeVisit(visit: Visit, rowNum) {
         this.httpService.deleteRow(this.url + `${visit.id}`)
             .subscribe(

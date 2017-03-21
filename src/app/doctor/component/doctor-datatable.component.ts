@@ -34,14 +34,6 @@ export class DoctorDatatableComponent implements OnInit {
         this.getDoctorList();
     }
 
-    public toInt(num: string) {
-        return +num;
-    }
-
-    public sortByWordLength = (a: any) => {
-        return a.city.length;
-    }
-
     public removeDoctor(doctor: Doctor, rowNum) {
         this.httpService.deleteRow(this.url + `${doctor.id}`)
             .subscribe(

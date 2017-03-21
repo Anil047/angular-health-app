@@ -71,7 +71,7 @@
                         <button (click)="removePatient(item,rowIndex)" class="btn btn-danger">x</button>
                         <button (click)="editPatient(item,rowIndex)" class="btn btn-primary">E</button>
                     </td>
-                    <td><img src="{{filePath}}{{item.imagePath}}"/></td>
+                    <td><img src="{{filePath}}{{item.imagePath}}" height="42" width="42"/></td>
                     <td>{{item.name}}</td>
                     <td>{{item.address}}</td>
                     <td class="text-right">{{item.dateOfRegistration}}</td>
