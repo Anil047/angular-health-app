@@ -1,7 +1,7 @@
 import "./app/utils/rxjs-extensions";
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AppComponent} from "./app.component";
 import {HttpModule} from "@angular/http";
 import {AppRoutes} from "./app.routes";
@@ -35,7 +35,8 @@ import {VisitDataFilterPipe} from "./app/utils/pipe/visit-data-filter.pipe";
         CommonModule,
         HttpModule,
         DataTableModule,
-        AppRoutes
+        AppRoutes,
+        ReactiveFormsModule
 
     ],
     declarations: [
